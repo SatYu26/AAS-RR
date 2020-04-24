@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "254291355791",
+    "firebase_url": "https://aeratorsystem.firebaseio.com",
+    "project_id": "aeratorsystem",
+    "storage_bucket": "aeratorsystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254291355791:android:1af52660cab3ffeb86e8fa",
+        "android_client_info": {
+          "package_name": "com.example.robic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254291355791-pfeic7e93n5lmdq13ahs1cfh9f9us3b0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7ks2y5OIkXeh0fC7IPYCeqUfSjFLDd4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254291355791-pfeic7e93n5lmdq13ahs1cfh9f9us3b0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
