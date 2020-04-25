@@ -18,24 +18,18 @@ abstract class BaseAuth {
   Future<String> signInWithGoogle();
 }
 
-
-
-
 class Auth implements BaseAuth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  Stream<String> get onAuthStateChanged =>
-      _firebaseAuth.onAuthStateChanged.map(
-            (FirebaseUser user) => user?.uid,
+  Stream<String> get onAuthStateChanged => _firebaseAuth.onAuthStateChanged.map(
+        (FirebaseUser user) => user?.uid,
       );
 
   Future<String> getCurrentUID() async {
     FirebaseUser user = (await _firebaseAuth.currentUser());
     return user.uid;
   }
-
-
 
   Future updateUserName(String name, FirebaseUser currentUser) async {
     var userUpdateInfo = UserUpdateInfo();
@@ -53,12 +47,12 @@ class Auth implements BaseAuth {
     return _firebaseAuth.signInAnonymously();
   }
 
-  Future convertUserWithEmail(String email, String password,
-      String name) async {
+  Future convertUserWithEmail(
+      String email, String password, String name) async {
     final currentUser = await _firebaseAuth.currentUser();
 
-    final credential = EmailAuthProvider.getCredential(
-        email: email, password: password);
+    final credential =
+        EmailAuthProvider.getCredential(email: email, password: password);
     await currentUser.linkWithCredential(credential);
     await updateUserName(name, currentUser);
   }
@@ -85,19 +79,18 @@ class Auth implements BaseAuth {
     return (await _firebaseAuth.signInWithCredential(credential)).user.uid;
   }
 
-
-  Future<String> signInWithEmailAndPassword(String email,
-      String password) async {
+  Future<String> signInWithEmailAndPassword(
+      String email, String password) async {
     FirebaseUser user = (await _firebaseAuth.signInWithEmailAndPassword(
-        email: email, password: password))
+            email: email, password: password))
         .user;
     return user.uid;
   }
 
-  Future<String> createUserWithEmailAndPassword(String email,
-      String password) async {
+  Future<String> createUserWithEmailAndPassword(
+      String email, String password) async {
     FirebaseUser user = (await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password))
+            email: email, password: password))
         .user;
     return user.uid;
   }

@@ -42,6 +42,7 @@ class _LoginPageState extends State<LoginPage>
 //                      email: _email, password: _password))
 //              .user;
           print('Signed in: $userId');
+          widget.onSignedIn();
         } else {
           String userId = await widget.auth
               .createUserWithEmailAndPassword(_email, _password);
@@ -51,8 +52,8 @@ class _LoginPageState extends State<LoginPage>
 //                      email: _email, password: _password))
 //              .user;
           print('Registered user: $userId');
+          formKey.currentState.reset();
         }
-        widget.onSignedIn();
       } catch (e) {
         print('Error: $e');
       }
@@ -91,6 +92,7 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
       body: new Stack(
         fit: StackFit.expand,
@@ -101,33 +103,40 @@ class _LoginPageState extends State<LoginPage>
             color: Colors.black87,
             colorBlendMode: BlendMode.darken,
           ),
-          new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Image(
-                image: new AssetImage("assets/4.png"),
-                width: _iconAnimation.value * 100,
-                height: _iconAnimation.value * 100,
-              ),
-              new Form(
-                key: formKey,
-                child: new Theme(
-                  data: new ThemeData(
-                      brightness: Brightness.dark,
-                      primarySwatch: Colors.teal,
-                      inputDecorationTheme: new InputDecorationTheme(
-                          labelStyle: new TextStyle(
-                              color: Colors.teal, fontSize: 20.0))),
-                  child: new Container(
-                    padding: const EdgeInsets.all(40.0),
-                    child: new Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: buildInputs() + buildSubmitButtons(),
-                    ),
+          SingleChildScrollView(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
+                  child: new Image(
+                    image: new AssetImage("assets/4.png"),
+                    width: _iconAnimation.value * 100,
+                    height: _iconAnimation.value * 100,
                   ),
                 ),
-              )
-            ],
+                new Form(
+                  key: formKey,
+                  child: new Theme(
+                    data: new ThemeData(
+                        brightness: Brightness.dark,
+                        primarySwatch: Colors.teal,
+                        inputDecorationTheme: new InputDecorationTheme(
+                            labelStyle: new TextStyle(
+                                color: Colors.teal, fontSize: 20.0))),
+                    child: SingleChildScrollView(
+                      child: new Container(
+                        padding: const EdgeInsets.all(40.0),
+                        child: new Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: buildInputs() + buildSubmitButtons(),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),
@@ -199,7 +208,7 @@ class _LoginPageState extends State<LoginPage>
           child: new Row(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.fromLTRB(8,5,8,0),
+                padding: const EdgeInsets.fromLTRB(8, 5, 8, 0),
                 child: new FlatButton(
                   child: new Text('Forgot Password ?',
                       style: new TextStyle(fontSize: 10.0)),
@@ -212,7 +221,7 @@ class _LoginPageState extends State<LoginPage>
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20,5,8,0),
+                padding: const EdgeInsets.fromLTRB(20, 5, 8, 0),
                 child: new FlatButton(
                   child: new Text('Create an Account',
                       style: new TextStyle(fontSize: 10.0)),

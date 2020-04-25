@@ -56,9 +56,9 @@ class _RootPageState extends State<RootPage> {
         );
     }
     return Container(
-      child: Center(
-        child: Text("Auth status unknown, please restart the application or contact the developer"),
-      )
-    );
+        child: Center(
+      child: Text(
+          "Auth status unknown, please restart the application or contact the developer"),
+    ));
   }
 }

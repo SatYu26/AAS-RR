@@ -71,7 +71,6 @@ class _ShowDataPageState extends State<ShowDataPage> {
     );
   }
 
-
   _openURL() async {
     const url = 'https://robicrufarm.com/';
     if (await canLaunch(url)) {
@@ -109,7 +108,7 @@ class _ShowDataPageState extends State<ShowDataPage> {
   //Center Widget
   Center profilePage(String name, String number, String location,
       String webLink, String address) {
-    double cWidth = MediaQuery.of(context).size.width*0.3;
+    double cWidth = MediaQuery.of(context).size.width * 0.3;
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -161,7 +160,8 @@ class _ShowDataPageState extends State<ShowDataPage> {
                               child: Text(
                                 location,
                                 style: TextStyle(
-                                    color: new Color(0xff335599), fontSize: 20.0),
+                                    color: new Color(0xff335599),
+                                    fontSize: 20.0),
                               ),
                             ),
                           ),
@@ -191,15 +191,13 @@ class _ShowDataPageState extends State<ShowDataPage> {
                   Row(
                     children: <Widget>[
                       Container(
-                        width: MediaQuery.of(context).size.width*0.6,
+                        width: MediaQuery.of(context).size.width * 0.6,
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
-                          child: Text(
-                            address,
-                            style: TextStyle(
-                                color: new Color(0xff335599), fontSize: 18.0),
-                              textAlign: TextAlign.center
-                          ),
+                          child: Text(address,
+                              style: TextStyle(
+                                  color: new Color(0xff335599), fontSize: 18.0),
+                              textAlign: TextAlign.center),
                         ),
                       ),
                     ],
@@ -251,7 +249,7 @@ class _ShowDataPageState extends State<ShowDataPage> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
-                                child: new Text("06",
+                                child: new Text("02",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 25)),
@@ -312,24 +310,24 @@ class _ShowDataPageState extends State<ShowDataPage> {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(color: Color(0xFFECF3FB)),
               child: CustomPaint(
-                  painter: CurvePainter(),
-                  child: allData.length == 0
-                      ? new Text(
-                          'No Data is Available',
-                          style: TextStyle(color: Colors.white),
-                        )
-                      : new Stack(
-                              children: <Widget>[
-                                profilePage(
-                                    "${allData[0].name}",
-                                    "${allData[0].number}",
-                                    "${allData[0].location}",
-                                    "${allData[0].website}",
-                                    "${allData[0].address}"),
-                                ProfileImageWidget(),
-                                editPage(),
-                              ],
-                            ),
+                painter: CurvePainter(),
+                child: allData.length == 0
+                    ? new Text(
+                        'No Data is Available',
+                        style: TextStyle(color: Colors.white),
+                      )
+                    : new Stack(
+                        children: <Widget>[
+                          profilePage(
+                              "${allData[0].name}",
+                              "${allData[0].number}",
+                              "${allData[0].location}",
+                              "${allData[0].website}",
+                              "${allData[0].address}"),
+                          ProfileImageWidget(),
+                          editPage(),
+                        ],
+                      ),
               ),
             ),
           )

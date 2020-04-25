@@ -11,13 +11,11 @@ class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => new _ProfilePageState();
 }
+
 class _ProfilePageState extends State<ProfilePage> {
-
-
-
   GlobalKey<FormState> _key = new GlobalKey();
   bool _autovalidate = false;
-  String name, number, address,location,website;
+  String name, number, address, location, website;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,8 @@ class _ProfilePageState extends State<ProfilePage> {
             colors: [Color(0xFF1F3B7B), Color(0xFF335599)],
             begin: Alignment(-1.0, -3.0),
             end: Alignment(1.0, 3.0),
-          ),),
+          ),
+        ),
         child: new SingleChildScrollView(
           child: new Container(
             padding: new EdgeInsets.all(15.0),
@@ -82,22 +81,20 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
         new TextFormField(
-          decoration: new InputDecoration(hintText: 'Mobile Number'),
+            decoration: new InputDecoration(hintText: 'Mobile Number'),
             keyboardType: TextInputType.phone,
             validator: validateMobile,
-            onSaved: (String val) {
+            onSaved: (val) {
               number = val;
             },
-          maxLines: 1,
-          maxLength: 12
-        ),
+            maxLines: 1,
+            maxLength: 10),
         new TextFormField(
           decoration: new InputDecoration(hintText: 'Location'),
           onSaved: (val) {
             location = val;
           },
           maxLines: 1,
-          maxLength: 32,
         ),
         new TextFormField(
           decoration: new InputDecoration(hintText: 'Website'),
@@ -120,7 +117,9 @@ class _ProfilePageState extends State<ProfilePage> {
           color: Color(0xFF1D262D),
           textColor: Colors.white,
           child: new Text('Save'),
-          onPressed: () {_sendToServer();},
+          onPressed: () {
+            _sendToServer();
+          },
           splashColor: Color(0xFF335599),
         ),
         new SizedBox(height: 20.0),
@@ -140,8 +139,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-
-  _sendToServer() async{
+  _sendToServer() async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
     if (_key.currentState.validate()) {
       _key.currentState.save();
@@ -151,8 +149,8 @@ class _ProfilePageState extends State<ProfilePage> {
         "name": name,
         "number": number,
         "address": address,
-        "location":location,
-        "website":website,
+        "location": location,
+        "website": website,
       };
       ref.child('node-name').child(user.uid).set(data).then((v) {
         _key.currentState.reset();
@@ -164,7 +162,6 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-
   String validateName(String val) {
     return val.length == 0 ? "Enter Name First" : null;
   }
@@ -172,6 +169,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String validateMessage(String val) {
     return val.length == 0 ? "Enter Address First" : null;
   }
+
   String validateMobile(String value) {
     if (value.length != 10)
       return 'Mobile Number must be of 10 digit';

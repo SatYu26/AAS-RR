@@ -17,15 +17,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // final key = new GlobalKey<ListItemWidget>();
 
-  void _signOut() async {
-    try {
-      await widget.auth.signOut();
-      widget.onSignedOut();
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -84,9 +75,13 @@ class _HomePageState extends State<HomePage> {
             ),
             CustomListTile(Icons.person, 'Profile', () {
               Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ShowDataPage()));
+            }),
+            CustomListTile(Icons.text_fields, 'Update My Info.', () {
+              Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ProfilePage()));
             }),
-            CustomListTile(Icons.lock_open, 'Log Out', _signOut),
+            CustomListTile(Icons.lock_open, 'Log Out', ()=> widget.onSignedOut()),
           ],
         ),
       ),
