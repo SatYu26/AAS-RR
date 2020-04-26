@@ -81,7 +81,9 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ProfilePage()));
             }),
-            CustomListTile(Icons.lock_open, 'Log Out', ()=> widget.onSignedOut()),
+            CustomListTile(Icons.lock_open, 'Log Out',  () {
+              widget.onSignedOut();
+            }),
           ],
         ),
       ),
