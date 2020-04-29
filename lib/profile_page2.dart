@@ -20,6 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey,
       appBar: new AppBar(
         title: Text('PROFILE'),
@@ -41,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF1F3B7B), Color(0xFF335599)],
+            colors: [Color(0xFFECF3FB), Colors.white],
             begin: Alignment(-1.0, -3.0),
             end: Alignment(1.0, 3.0),
           ),
@@ -108,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
             address = val;
           },
           validator: validateMessage,
-          maxLines: 5,
+          maxLines: 4,
           maxLength: 256,
         ),
         new MaterialButton(

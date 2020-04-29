@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:robic/auth.dart';
+import 'Discover_page.dart';
 import 'swipelist_home.dart';
 import 'package:robic/Profile_Page_UI.dart';
 import 'package:robic/profile_page2.dart';
@@ -80,6 +81,10 @@ class _HomePageState extends State<HomePage> {
             CustomListTile(Icons.text_fields, 'Update My Info.', () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ProfilePage()));
+            }),
+            CustomListTile(Icons.book, 'Discover', () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DiscoverPage()));
             }),
             CustomListTile(Icons.lock_open, 'Log Out',  () {
               widget.onSignedOut();
