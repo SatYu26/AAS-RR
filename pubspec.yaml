@@ -64,6 +64,7 @@ flutter:
     - assets/4.png
     - assets/aerator.png
     - assets/person.png
+    - assets/rufarm_logo.png
   fonts:
     - family: Montserrat
       fonts:
