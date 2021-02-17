@@ -1,6 +1,6 @@
-# robic
+# Robic Rufarm
 
-A new Flutter application.
+A flutter app i created for my internship in Robic Rufarm.
 
 ## Getting Started
 
